@@ -35,6 +35,10 @@ Create a executable script in the the top directory, e.g. `dist.py`
         'version.min_required': '1.2.3',
     })
 
+Optionally these can also be set:
+
+    dist(info, blacklist=[], filename='mypackage.mkp')
+
 Create a directory structure as follows:
 
     ├── agents/

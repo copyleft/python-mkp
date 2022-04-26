@@ -22,7 +22,7 @@ _VERSION_PACKAGED = 'python-mkp'
 _DIST_DIR = 'dist'
 
 
-def dist(info, path=None, blacklist=[]):
+def dist(info, path=None, blacklist=[], filename=None):
     if not path:
         import __main__ as main
         path = os.path.dirname(os.path.realpath(main.__file__))
@@ -30,7 +30,8 @@ def dist(info, path=None, blacklist=[]):
     info['files'] = find_files(path, blacklist)
     info['num_files'] = sum(len(file_list) for file_list in info['files'].values())
     dist_dir = os.path.join(path, _DIST_DIR)
-    filename = '{}-{}.mkp'.format(info['name'], info['version'])
+    if not filename:
+        filename = '{}-{}.mkp'.format(info['name'], info['version'])
 
     if not os.path.exists(dist_dir):
         os.makedirs(dist_dir)
